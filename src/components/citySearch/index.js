@@ -1,7 +1,7 @@
 import React from 'react';
 import View from './view';
 
-class CitySearchModal extends React.Component {
+class CitySearch extends React.Component {
   render () {
     return (
       <View />
@@ -9,4 +9,4 @@ class CitySearchModal extends React.Component {
   }
 }
 
-export default CitySearchModal;
+export default CitySearch;

@@ -12,6 +12,7 @@ import Icon3 from 'react-native-vector-icons/Foundation';
 import Icon4 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Logo from './logo';
 import CitySearchIcon from '../components/_misc/citySearchIcon';
+import CitySearchBar from '../components/_misc/citySearchBar';
 
 import FindHunt from '../containers/findHunt';
 import MyHunts from '../containers/myHunts';
@@ -91,9 +92,8 @@ const noBottomNav = createBottomTabNavigator({
     screen: createStackNavigator({
       MyHunts: {
         screen: CitySearch,
-        // title: 'My Hunts',
         navigationOptions: {
-          headerLeft: <View><Text>Search</Text></View>,
+          headerLeft: <CitySearchBar />,
         },
       },
     }),
