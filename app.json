@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Geo",
-    "slug": "geo_mobile_app",
+    "name": "Scoutr",
+    "slug": "scoutr",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

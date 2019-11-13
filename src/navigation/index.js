@@ -11,29 +11,23 @@ import Icon2 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icon3 from 'react-native-vector-icons/Foundation';
 import Icon4 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Logo from './logo';
+import CitySearchIcon from '../components/_misc/citySearchIcon';
 
 import FindHunt from '../containers/findHunt';
 import MyHunts from '../containers/myHunts';
 import Account from '../containers/account';
+import CitySearch from '../containers/citySearch';
+
 
 const mainNav = createBottomTabNavigator({
-  // FindHunt: {
-  //   screen: FindHunt,
-  //   navigationOptions: {
-  //     title: 'Find Hunts',
-  //     activeTintColor: Colors.main,
-  //     tabBarIcon: ({ tintColor }) => (
-  //       <Icon2 name="map-search-outline" size={26} color={tintColor}/>
-  //     )
-  //   }
-  // },
   FindHunt: {
     screen: createStackNavigator({
       MyHunts: {
         screen: FindHunt,
         // title: 'My Hunts',
         navigationOptions: {
-          headerLeft: <Logo />
+          headerLeft: <Logo />,
+          headerRight: <CitySearchIcon />,
         },
       },
     }),
@@ -51,7 +45,7 @@ const mainNav = createBottomTabNavigator({
         screen: MyHunts,
         // title: 'My Hunts',
         navigationOptions: {
-          headerLeft: <Logo />
+          headerLeft: <Logo />,
         },
       },
     }),
@@ -67,9 +61,9 @@ const mainNav = createBottomTabNavigator({
     screen: createStackNavigator({
       MyHunts: {
         screen: Account,
-        // title: 'My Hunts',
+        title: 'Account',
         navigationOptions: {
-          headerLeft: <Logo />
+          headerLeft: <Logo />,
         },
       },
     }),
@@ -92,9 +86,40 @@ const mainNav = createBottomTabNavigator({
   },
 });
 
+const noBottomNav = createBottomTabNavigator({
+  CitySearch: {
+    screen: createStackNavigator({
+      MyHunts: {
+        screen: CitySearch,
+        // title: 'My Hunts',
+        navigationOptions: {
+          headerLeft: <View><Text>Search</Text></View>,
+        },
+      },
+    }),
+    navigationOptions: {
+      title: 'City Search',
+      activeTintColor: Colors.main,
+      tabBarIcon: ({ tintColor }) => (
+        <Icon2 name="map-search-outline" size={28} color={tintColor}/>
+      )
+    }
+  },
+},
+{
+  tabBarOptions: {
+    activeTintColor: Colors.main,
+    style: {
+      display: 'none'
+    }
+  },
+});
+
+
+
 const rootNavigator = createSwitchNavigator({
   // Auth: { screen: authNav },
-  // Signup: { screen: Signup },
+  NoBottomNav: noBottomNav,
   Main: mainNav,
 }, {
   initialRouteName: 'Main',
