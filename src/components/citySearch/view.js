@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, FlatList } from 'react-native';
 import styles from './styles';
 
-export default function citySearch() {
+export default function citySearch(props) {
   return (
     <View style={styles.container}>
       <Text>Search Results</Text>

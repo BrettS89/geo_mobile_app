@@ -1,2 +1,0 @@
-import { OPEN_CITY_SEARCH_MODAL, CLOSE_CITY_SEARCH_MODAL } from './types';
-

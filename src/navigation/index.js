@@ -115,6 +115,17 @@ const noBottomNav = createBottomTabNavigator({
   },
 });
 
+// const authNav = createBottomTabNavigator({
+
+// },
+// {
+//   tabBarOptions: {
+//     activeTintColor: Colors.main,
+//     style: {
+//       display: 'none'
+//     }
+//   },
+// });
 
 
 const rootNavigator = createSwitchNavigator({

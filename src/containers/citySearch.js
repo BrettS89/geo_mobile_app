@@ -1,19 +1,20 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import citySearchModal from '../components/citySearch';
-import * as citySearchActions from '../redux/actions/citySearch';
+import * as huntsActions from '../redux/actions/hunts';
 
-function mapStateToProps({ citySearch: { searchResults } }) {
+function mapStateToProps({ hunts: { cities, searchTerm } }) {
   return {
     state: {
-      searchResults,
+      cities,
+      searchTerm,
     },
   };
 }
 
 function mapDispatchToProps(dispatch) {
   const allActions = {
-    ...citySearchActions,
+    ...huntsActions,
   };
 
   return {
