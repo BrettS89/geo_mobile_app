@@ -9,7 +9,18 @@ async function getToken() {
 
 export async function apiGetCities(queryString) {
   const res = await fetch(`${URI}/hunts/findcity?city=${queryString}`, {
-    METHOD: 'get',
+    method: 'get',
+    headers: {
+      'authorization': await getToken(),
+      'Content-Type': 'application/json',
+    },
+  });
+  return await res.json();
+}
+
+export async function apiFindHunts(lat, lon) {
+  const res = await fetch(`${URI}/hunts/find?lat=${lat}&lon=${lon}`, {
+    method: 'get',
     headers: {
       'authorization': await getToken(),
       'Content-Type': 'application/json',

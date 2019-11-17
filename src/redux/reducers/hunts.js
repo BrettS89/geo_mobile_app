@@ -1,4 +1,4 @@
-import { SET_CITIES } from '../actions/types';
+import { SET_CITIES, SET_HUNTS } from '../actions/types';
 
 const INITIAL_STATE = {
   searchTerm: null,
@@ -14,6 +14,13 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         cities: payload.cities,
         searchTerm: payload.searchTerm,
+      };
+
+    case SET_HUNTS:
+    console.log(payload);
+      return {
+        ...state,
+        hunts: payload,
       };
 
     default:
