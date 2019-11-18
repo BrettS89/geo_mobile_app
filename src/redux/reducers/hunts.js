@@ -17,7 +17,6 @@ export default (state = INITIAL_STATE, { type, payload }) => {
       };
 
     case SET_HUNTS:
-    console.log(payload);
       return {
         ...state,
         hunts: payload,

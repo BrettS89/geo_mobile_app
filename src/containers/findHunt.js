@@ -1,7 +1,7 @@
 import findHunt from '../components/findHunt';
 import { connect } from 'react-redux';
 
-function mapStateToProps({ hunts }) {
+function mapStateToProps({ hunts: { hunts } }) {
   return {
     state: {
       hunts,
