@@ -22,7 +22,11 @@ class CitySearchBar extends React.Component {
             <Back name="ios-arrow-round-back" size={40} />
         </TouchableOpacity>
         <View style={styles.searchBar}>
-          <TextInput placeholder="Search for a city" onChange={this._onSearch} />
+          <TextInput 
+            placeholder="Search for a city"
+            onChange={this._onSearch}
+            underlineColorAndroid="transparent"
+          />
         </View>
       </View>
     );

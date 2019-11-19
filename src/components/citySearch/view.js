@@ -11,6 +11,7 @@ export default function citySearch(props) {
           // extraData={[state, playing]}
           keyExtractor={city => city._id}
           showsVerticalScrollIndicator={false}
+          keyboardShouldPersistTaps="always"
           renderItem={city => (
             <CityRow
               city={city.item}

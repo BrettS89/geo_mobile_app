@@ -6,7 +6,6 @@ import HuntCard from './subComponents/huntCard';
 export default function findHuntView(props) {
   return (
     <View style={styles.container}>
-      <Text>Find hunts</Text>
       <FlatList
         data={props.hunts}
         keyExtractor={hunt => hunt._id}
