@@ -1,5 +1,7 @@
 import findHunt from '../components/findHunt';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as huntsActions from '../redux/actions/hunts';
 
 function mapStateToProps({ hunts: { hunts } }) {
   return {
@@ -9,4 +11,14 @@ function mapStateToProps({ hunts: { hunts } }) {
   };
 }
 
-export default connect(mapStateToProps)(findHunt);
+function mapDispatchToProps(dispatch) {
+  const allActions = {
+    ...huntsActions,
+  };
+
+  return {
+    actions: bindActionCreators(allActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(findHunt);

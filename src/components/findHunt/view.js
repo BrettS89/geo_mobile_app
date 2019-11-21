@@ -13,7 +13,7 @@ export default function findHuntView(props) {
         renderItem={hunt => (
           <HuntCard
             hunt={hunt.item}
-            
+            navigateToHunt={props.navigateToHunt}
           />
         )}
       />

@@ -2,9 +2,12 @@ import React from 'react';
 import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
 import styles from '../styles';
 
-export default function huntCard({ hunt }) {
+export default function huntCard({ hunt, navigateToHunt }) {
   return (
-    <TouchableOpacity style={styles.huntCardContainer}>
+    <TouchableOpacity 
+      style={styles.huntCardContainer}
+      onPress={() => navigateToHunt(hunt._id)}
+    >
       <ImageBackground 
         style={styles.imageView}
         imageStyle={{ borderRadius: 1 }}

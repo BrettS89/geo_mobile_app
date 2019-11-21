@@ -1,0 +1,1 @@
+export const hunts = state => state.hunts.hunts;

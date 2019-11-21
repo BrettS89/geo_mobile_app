@@ -36,5 +36,6 @@ export default StyleSheet.create({
   description: {
     flexWrap: 'wrap',
     marginBottom: 5,
+    fontSize: 13,
   }
 });

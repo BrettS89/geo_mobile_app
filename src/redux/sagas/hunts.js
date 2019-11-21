@@ -3,10 +3,12 @@ import {
 } from 'redux-saga/effects';
 import * as types from '../actions/types';
 import * as api from '../../lib/api';
+import { hunts } from '../selectors';
 
 export default [
   searchCitiesWatcher,
   findHuntsWatcher,
+  selectHuntWatcher,
 ];
 
 function * searchCitiesWatcher() {
@@ -15,6 +17,10 @@ function * searchCitiesWatcher() {
 
 function * findHuntsWatcher() {
   yield takeLatest(types.FIND_HUNTS, findHuntsHandler);
+}
+
+function * selectHuntWatcher() {
+  yield takeLatest(types.SELECT_HUNT, selectHuntHandler);
 }
 
 function * searchCitiesHandler({ payload }) {
@@ -34,5 +40,17 @@ function * findHuntsHandler({ payload }) {
     yield put({ type: types.SET_HUNTS, payload: res.data });
   } catch(e) {
     console.log('find hunts handler error', e);
+  }
+}
+
+function * selectHuntHandler({ payload: { hunt, navigate } }) {
+  try {
+    const huntsState = yield select(hunts);
+    const selectedHunt = huntsState.find(h => h._id === hunt);
+    console.log(selectedHunt);
+    yield put({ type: types.SET_HUNT, payload: selectedHunt });
+    navigate();
+  } catch(e) {
+    console.log('selectHuntHandler error: ', e);
   }
 }

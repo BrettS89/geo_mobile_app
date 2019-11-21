@@ -18,6 +18,7 @@ import FindHunt from '../containers/findHunt';
 import MyHunts from '../containers/myHunts';
 import Account from '../containers/account';
 import CitySearch from '../containers/citySearch';
+import HuntDetails from '../containers/huntDetails';
 
 
 const mainNav = createBottomTabNavigator({
@@ -99,6 +100,23 @@ const noBottomNav = createBottomTabNavigator({
     }),
     navigationOptions: {
       title: 'City Search',
+      activeTintColor: Colors.main,
+      tabBarIcon: ({ tintColor }) => (
+        <Icon2 name="map-search-outline" size={28} color={tintColor}/>
+      )
+    }
+  },
+  HuntDetails: {
+    screen: createStackNavigator({
+      MyHunts: {
+        screen: HuntDetails,
+        navigationOptions: {
+          headerLeft: <Logo />,
+        },
+      },
+    }),
+    navigationOptions: {
+      title: 'Hunt Details',
       activeTintColor: Colors.main,
       tabBarIcon: ({ tintColor }) => (
         <Icon2 name="map-search-outline" size={28} color={tintColor}/>
