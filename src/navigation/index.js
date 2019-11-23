@@ -13,12 +13,18 @@ import Icon4 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Logo from './logo';
 import CitySearchIcon from '../components/_misc/citySearchIcon';
 import CitySearchBar from '../components/_misc/citySearchBar';
+import HuntDetailHeader from '../components/_misc/huntDetailHeader';
+import TokenHeader from '../components/_misc/tokensHeader';
+
+// Auth
+import Login from '../containers/login';
 
 import FindHunt from '../containers/findHunt';
 import MyHunts from '../containers/myHunts';
 import Account from '../containers/account';
 import CitySearch from '../containers/citySearch';
 import HuntDetails from '../containers/huntDetails';
+
 
 
 const mainNav = createBottomTabNavigator({
@@ -111,7 +117,8 @@ const noBottomNav = createBottomTabNavigator({
       MyHunts: {
         screen: HuntDetails,
         navigationOptions: {
-          headerLeft: <Logo />,
+          headerLeft: <HuntDetailHeader />,
+          headerRight: <TokenHeader />,
         },
       },
     }),
@@ -133,25 +140,34 @@ const noBottomNav = createBottomTabNavigator({
   },
 });
 
-// const authNav = createBottomTabNavigator({
-
-// },
-// {
-//   tabBarOptions: {
-//     activeTintColor: Colors.main,
-//     style: {
-//       display: 'none'
-//     }
-//   },
-// });
+const authNav = createBottomTabNavigator({
+  Login: {
+    screen: Login,
+    navigationOptions: {
+      title: 'Login',
+      activeTintColor: Colors.main,
+      tabBarIcon: ({ tintColor }) => (
+        <Icon2 name="list" size={26} color={tintColor}/>
+      )
+    }
+  },
+},
+{
+  tabBarOptions: {
+    activeTintColor: Colors.main,
+    style: {
+      display: 'none'
+    }
+  },
+});
 
 
 const rootNavigator = createSwitchNavigator({
-  // Auth: { screen: authNav },
+  Auth: authNav,
   NoBottomNav: noBottomNav,
   Main: mainNav,
 }, {
-  initialRouteName: 'Main',
+  initialRouteName: 'Auth',
 });
 
 export default createAppContainer(rootNavigator);

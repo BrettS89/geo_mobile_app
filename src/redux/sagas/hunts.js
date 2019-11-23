@@ -47,7 +47,6 @@ function * selectHuntHandler({ payload: { hunt, navigate } }) {
   try {
     const huntsState = yield select(hunts);
     const selectedHunt = huntsState.find(h => h._id === hunt);
-    console.log(selectedHunt);
     yield put({ type: types.SET_HUNT, payload: selectedHunt });
     navigate();
   } catch(e) {

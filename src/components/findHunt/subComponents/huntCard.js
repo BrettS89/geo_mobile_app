@@ -10,7 +10,7 @@ export default function huntCard({ hunt, navigateToHunt }) {
     >
       <ImageBackground 
         style={styles.imageView}
-        imageStyle={{ borderRadius: 1 }}
+        imageStyle={{ borderRadius: 2 }}
         resizeMode="cover"
         source={{ uri: hunt.prizePic }}
       />
