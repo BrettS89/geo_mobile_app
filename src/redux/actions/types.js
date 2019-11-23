@@ -1,4 +1,6 @@
+// Auth
 export const ON_LOGIN = 'ON_LOGIN';
+export const ON_REGISTER = 'ON_REGISTER';
 
 // Hunts
 export const GET_CITIES = 'GET_CITIES';

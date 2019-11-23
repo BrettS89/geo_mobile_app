@@ -1,10 +1,27 @@
 import { AsyncStorage } from 'react-native';
 import { URI } from '../config';
+import errorThrower from '../utils/errorThrower';
 
 async function getToken() {
   const token = await AsyncStorage.getItem('token');
   if (!token) throw new Error('no token');
   return token;
+}
+
+export async function apiRegister(body) {
+  const res = await fetch(`${URI}/user/register`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  console.log(res.status);
+  return await res.json();
+}
+
+export async function apiLogin(body) {
+
 }
 
 export async function apiGetCities(queryString) {
