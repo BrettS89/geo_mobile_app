@@ -16,12 +16,22 @@ export async function apiRegister(body) {
     },
     body: JSON.stringify(body),
   });
-  console.log(res.status);
-  return await res.json();
+  const response = await res.json();
+  errorThrower(res, response);
+  return response;
 }
 
 export async function apiLogin(body) {
-
+  const res = await fetch(`${URI}/user/login`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body),
+  });
+  const response = await res.json();
+  errorThrower(res, response);
+  return await res.json();
 }
 
 export async function apiGetCities(queryString) {

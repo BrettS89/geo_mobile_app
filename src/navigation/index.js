@@ -142,20 +142,20 @@ const noBottomNav = createBottomTabNavigator({
 });
 
 const authNav = createBottomTabNavigator({
-  Register: {
-    screen: Register,
+  Login: {
+    screen: Login,
     navigationOptions: {
-      title: 'Register',
+      title: 'Login',
       activeTintColor: Colors.main,
       tabBarIcon: ({ tintColor }) => (
         <Icon2 name="list" size={26} color={tintColor}/>
       )
     }
   },
-  Login: {
-    screen: Login,
+  Register: {
+    screen: Register,
     navigationOptions: {
-      title: 'Login',
+      title: 'Register',
       activeTintColor: Colors.main,
       tabBarIcon: ({ tintColor }) => (
         <Icon2 name="list" size={26} color={tintColor}/>
@@ -168,7 +168,8 @@ const authNav = createBottomTabNavigator({
     activeTintColor: Colors.main,
     style: {
       display: 'none'
-    }
+    },
+    // initialRouteName: 'Login'
   },
 });
 

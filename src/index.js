@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { View, Text, AsyncStorage } from 'react-native';
 import store from './redux';
 import AppNav from './navigation';
+import LoadingModal from './shared/components/loadingModal';
 
 class AppContainer extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class AppContainer extends React.Component {
       <Provider store={store()}>
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
           <AppNav />
+          <LoadingModal />
         </View>
       </Provider>
     );

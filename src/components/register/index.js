@@ -12,7 +12,11 @@ class Register extends React.Component {
   };
 
   onRegister = () => {
-    this.props.actions.onRegister(this.state);
+    this.props.actions.onRegister({ form: this.state, navigate: this.navigate});
+  };
+
+  navigate = () => {
+    this.props.navigation.navigate('FindHunt');
   };
 
   render() {

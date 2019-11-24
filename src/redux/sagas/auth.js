@@ -1,3 +1,4 @@
+import { AsyncStorage } from 'react-native';
 import {
   call, put, takeLatest, select, fork,
 } from 'redux-saga/effects';
@@ -17,22 +18,24 @@ function * loginWatcher() {
   yield takeLatest(actions.ON_LOGIN, loginHandler);
 }
 
-function * loginHandler({ payload }) {
+function * loginHandler({ payload: { form, navigate } }) {
   try {
-    yield console.log('in');
-    const res = yield call(api.apiLogin, payload);
-    console.log(res);
+    const res = yield call(api.apiLogin, form);
+    yield AsyncStorage.setItem('token', res.token);
+    navigate();
   } catch(e) {
-    console.log('handle error');
+    yield put({ type: actions.SET_LOGIN_ERROR, payload: e.error.message });
+    console.log('loginHandler error: ', e.error.message);
   }
 }
 
-function * registerHandler({ payload }) {
+function * registerHandler({ payload: { form, navigate } }) {
   try {
-    yield console.log('in');
-    const res = yield call(api.apiRegister, payload);
-    console.log(res);
+    const res = yield call(api.apiRegister, form);
+    yield AsyncStorage.setItem('token', res.token);
+    navigate();
   } catch(e) {
-    console.log('handle error');
+    yield put({ type: actions.SET_REGISTRATION_ERROR, payload: e.error.message });
+    console.log('registerHandler error: ', e.error.message);
   }
 }
