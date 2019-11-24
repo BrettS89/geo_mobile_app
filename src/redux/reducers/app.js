@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   loading: false,
 };
 
-export default (state = INITIAL_STATE, { type, payload }) => {
+export default (state = INITIAL_STATE, { type }) => {
   switch (type) {
 
     case APP_LOADING:

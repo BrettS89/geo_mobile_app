@@ -17,6 +17,7 @@ import HuntDetailHeader from '../components/_misc/huntDetailHeader';
 import TokenHeader from '../components/_misc/tokensHeader';
 
 // Auth
+import Auth from '../containers/auth';
 import Login from '../containers/login';
 import Register from '../containers/register';
 
@@ -142,6 +143,16 @@ const noBottomNav = createBottomTabNavigator({
 });
 
 const authNav = createBottomTabNavigator({
+  Auth: {
+    screen: Auth,
+    navigationOptions: {
+      title: 'Auth',
+      activeTintColor: Colors.main,
+      tabBarIcon: ({ tintColor }) => (
+        <Icon2 name="list" size={26} color={tintColor}/>
+      )
+    }
+  },
   Login: {
     screen: Login,
     navigationOptions: {

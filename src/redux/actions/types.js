@@ -1,4 +1,5 @@
 // App
+export const ON_APP_LOAD = 'ON_APP_LOAD';
 export const APP_LOADING = 'APP_LOADING';
 export const APP_NOT_LOADING = 'APP_NOT_LOADING';
 

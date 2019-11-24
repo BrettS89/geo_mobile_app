@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   cities: [],
   hunts: [],
   hunt: {},
+  myHunts: [],
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {

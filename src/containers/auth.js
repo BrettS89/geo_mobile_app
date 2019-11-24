@@ -1,5 +1,16 @@
 import auth from '../components/auth';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as appActions from '../redux/actions/app';
 
-export default connect(null)(auth);
+function mapDispatchToProps(dispatch) {
+  const allActions = {
+    ...appActions,
+  };
+
+  return {
+    actions: bindActionCreators(allActions, dispatch),
+  };
+}
+
+export default connect(null, mapDispatchToProps)(auth);

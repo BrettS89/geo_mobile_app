@@ -5,6 +5,12 @@ import Input from '../../shared/components/Input';
 import { LOGO5 } from '../../../assets/images';
 
 export default function registerView(props) {
+  function showError() {
+    return props.error
+      ? props.error
+      : '';
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.signupFormContainer}>
@@ -13,7 +19,7 @@ export default function registerView(props) {
           <Image source={LOGO5} resizeMode="contain" style={{ width: 160, height: 50 }} />
         </View>
 
-        <View style={{ marginTop: 40, marginBottom: 15 }}>
+        <View style={{ marginTop: 40 }}>
           <View style={styles.inputContainer}>
             <Input
               name="email"
@@ -24,7 +30,7 @@ export default function registerView(props) {
               onSubmitHandler={props.onRegister}
             />
           </View>
-          <View style={styles.inputContainer}>
+          <View>
             <Input
               name="password"
               labelText="password"
@@ -34,13 +40,15 @@ export default function registerView(props) {
               onSubmitHandler={props.onRegister}
             />
           </View> 
-          {/* <View>
+        </View>
+
+        <View style={styles.errorContainer}>
+          <Text style={styles.errorText}>
             {showError()}
-          </View> */}
+          </Text>
         </View>
 
         <View>
-          {/* {buttonOrSpinner()} */}
           <TouchableOpacity  
             style={styles.button}
             onPress={props.onRegister}

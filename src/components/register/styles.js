@@ -39,4 +39,13 @@ export default StyleSheet.create({
     fontWeight: '600',
     fontSize: 15,
   },
+  errorContainer: {
+    marginTop: 5,
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  errorText: {
+    fontSize: 12,
+    color: 'red',
+  },
 });

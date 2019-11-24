@@ -8,6 +8,19 @@ async function getToken() {
   return token;
 }
 
+export async function apiIsLoggedIn() {
+  const res = await fetch(`${URI}/user/isloggedin`, {
+    method: 'get',
+    headers: {
+      'authorization': await getToken(),
+      'Content-Type': 'application/json',
+    },
+  });
+  const response = await res.json();
+  errorThrower(res, response);
+  return response;
+}
+
 export async function apiRegister(body) {
   const res = await fetch(`${URI}/user/register`, {
     method: 'post',

@@ -20,22 +20,30 @@ function * loginWatcher() {
 
 function * loginHandler({ payload: { form, navigate } }) {
   try {
+    yield put({ type: actions.CLEAR_AUTH_ERRORS });
+    yield put({ type: actions.APP_LOADING });
     const res = yield call(api.apiLogin, form);
     yield AsyncStorage.setItem('token', res.token);
     navigate();
+    yield put({ type: actions.APP_NOT_LOADING });
   } catch(e) {
-    yield put({ type: actions.SET_LOGIN_ERROR, payload: e.error.message });
-    console.log('loginHandler error: ', e.error.message);
+    yield put({ type: actions.SET_LOGIN_ERROR, payload: e.message });
+    yield put({ type: actions.APP_NOT_LOADING });
+    console.log('loginHandler error: ', e.message);
   }
 }
 
 function * registerHandler({ payload: { form, navigate } }) {
   try {
+    yield put({ type: actions.CLEAR_AUTH_ERRORS });
+    yield put({ type: actions.APP_LOADING });
     const res = yield call(api.apiRegister, form);
     yield AsyncStorage.setItem('token', res.token);
     navigate();
+    yield put({ type: actions.APP_NOT_LOADING });
   } catch(e) {
-    yield put({ type: actions.SET_REGISTRATION_ERROR, payload: e.error.message });
-    console.log('registerHandler error: ', e.error.message);
+    yield put({ type: actions.SET_REGISTRATION_ERROR, payload: e.message });
+    yield put({ type: actions.APP_NOT_LOADING });
+    console.log('registerHandler error: ', e.message);
   }
 }

@@ -24,6 +24,7 @@ class Register extends React.Component {
       <View
         onTextChange={this.onTextChange}
         onRegister={this.onRegister}
+        error={this.props.state.registrationError}
       />
     );
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { SplashScreen } from 'expo';
 import View from './view';
 
 class Login extends React.Component {
@@ -6,6 +7,10 @@ class Login extends React.Component {
     email: '',
     password: '',
   };
+
+  componentDidMount() {
+    SplashScreen.hide();
+  }
 
   onTextChange = (val, type) => {
     this.setState({ [type]: val });
@@ -24,6 +29,7 @@ class Login extends React.Component {
       <View
         onTextChange={this.onTextChange}
         onLogin={this.onLogin}
+        error={this.props.state.loginError}
       />
     );
   }
