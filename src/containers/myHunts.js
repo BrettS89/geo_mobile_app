@@ -1,3 +1,12 @@
 import myHunts from '../components/myHunts';
+import { connect } from 'react-redux';
 
-export default myHunts;
+function mapStateToProps({ hunts: { myHunts } }) {
+  return {
+    state: {
+      myHunts,
+    },
+  };
+}
+
+export default connect(mapStateToProps)(myHunts);

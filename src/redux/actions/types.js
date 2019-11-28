@@ -10,11 +10,15 @@ export const SET_LOGIN_ERROR = 'SET_LOGIN_ERROR';
 export const SET_REGISTRATION_ERROR = 'SET_REGISTRATION_ERROR';
 export const CLEAR_AUTH_ERRORS = 'CLEAR_AUTH_ERRORS';
 
+// User
+export const SET_USER_DATA = 'SET_USER_DATA';
+
 // Hunts
 export const GET_CITIES = 'GET_CITIES';
 export const SET_CITIES = 'SET_CITIES';
 export const FIND_HUNTS = 'FIND_HUNTS';
 export const SET_HUNTS = 'SET_HUNTS';
+export const SET_MY_HUNTS = 'SET_MY_HUNTS';
 export const SELECT_HUNT = 'SELECT_HUNT';
 export const SET_HUNT = 'SET_HUNT';
 
