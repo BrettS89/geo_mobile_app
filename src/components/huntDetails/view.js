@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import styles from './styles';
 
-export default function huntDetailsView({ hunt }) {
+export default function huntDetailsView({ hunt, enterHunt }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{hunt.title}</Text>
@@ -39,7 +39,7 @@ export default function huntDetailsView({ hunt }) {
         </Text>
       </View>
 
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity style={styles.button} onPress={enterHunt}>
         <Text style={styles.buttonText}>
           Enter
         </Text>

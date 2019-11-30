@@ -32,7 +32,7 @@ import HuntDetails from '../containers/huntDetails';
 const mainNav = createBottomTabNavigator({
   FindHunt: {
     screen: createStackNavigator({
-      MyHunts: {
+      FindHunt: {
         screen: FindHunt,
         // title: 'My Hunts',
         navigationOptions: {
@@ -53,7 +53,7 @@ const mainNav = createBottomTabNavigator({
     screen: createStackNavigator({
       MyHunts: {
         screen: MyHunts,
-        // title: 'My Hunts',
+        title: 'MyHunts',
         navigationOptions: {
           headerLeft: <Logo />,
         },
@@ -69,7 +69,7 @@ const mainNav = createBottomTabNavigator({
   },
   Account: {
     screen: createStackNavigator({
-      MyHunts: {
+      Account: {
         screen: Account,
         title: 'Account',
         navigationOptions: {
@@ -99,7 +99,7 @@ const mainNav = createBottomTabNavigator({
 const noBottomNav = createBottomTabNavigator({
   CitySearch: {
     screen: createStackNavigator({
-      MyHunts: {
+      CitySearch: {
         screen: CitySearch,
         navigationOptions: {
           headerLeft: <CitySearchBar />,
@@ -116,7 +116,7 @@ const noBottomNav = createBottomTabNavigator({
   },
   HuntDetails: {
     screen: createStackNavigator({
-      MyHunts: {
+      HuntDetails: {
         screen: HuntDetails,
         navigationOptions: {
           headerLeft: <HuntDetailHeader />,

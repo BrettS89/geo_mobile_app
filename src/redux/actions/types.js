@@ -23,3 +23,4 @@ export const SELECT_HUNT = 'SELECT_HUNT';
 export const SET_HUNT = 'SET_HUNT';
 
 // Hunt
+export const ENTER_HUNT = 'ENTER_HUNT';

@@ -44,7 +44,7 @@ export async function apiLogin(body) {
   });
   const response = await res.json();
   errorThrower(res, response);
-  return await res.json();
+  return response;
 }
 
 export async function apiGetCities(queryString) {
@@ -67,4 +67,18 @@ export async function apiFindHunts(lat, lon) {
     },
   });
   return await res.json();
+}
+
+export async function apiEnterHunt(body) {
+  const res = await fetch(`${URI}/hunt/enter`, {
+    method: 'post',
+    body: JSON.stringify(body),
+    headers: {
+      'authorization': await getToken(),
+      'Content-Type': 'application/json',
+    },
+  });
+  const response = await res.json();
+  errorThrower(res, response);
+  return response;
 }
