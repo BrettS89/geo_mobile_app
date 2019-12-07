@@ -18,6 +18,7 @@ function * appLoadHandler({ payload }) {
     const { data } = yield call(api.apiIsLoggedIn);
     yield put({ type: actions.SET_USER_DATA, payload: data.user });
     yield put({ type: actions.SET_MY_HUNTS, payload: data.myHunts });
+    yield put({ type: actions.APP_NOT_LOADING });
     payload('success');
     yield put({ type: actions.APP_NOT_LOADING });
   } catch(e) {

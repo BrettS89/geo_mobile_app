@@ -1,7 +1,7 @@
 import React from 'react';
 import View from './view';
 
-class InsufficientTokens extends React.Component {
+class PurchaseTokens extends React.Component {
   render() {
     return (
       <View />
@@ -9,4 +9,4 @@ class InsufficientTokens extends React.Component {
   }
 }
 
-export default InsufficientTokens;
+export default PurchaseTokens;

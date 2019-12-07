@@ -45,5 +45,30 @@ export default StyleSheet.create({
   buttonText: {
     color: colors.main,
     fontWeight: '600',
+  },
+  modalContainer: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+    flex: 1,
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  modalContentContainer: {
+    width: '70%',
+    backgroundColor: '#fff',
+    padding: 20,
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  modalTitle: {
+    fontWeight: '600',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  tokensIcon: {
+    marginVertical: 25,
+  },
+  noThanksButton: {
+    fontWeight: '600',
+    color: colors.secondary,
   }
 });

@@ -33,7 +33,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
     case SET_MY_HUNTS:
       return {
         ...state,
-        myHunts: [],
+        myHunts: payload,
       };
 
     default:

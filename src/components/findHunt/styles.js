@@ -5,7 +5,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingHorizontal: 15,
     backgroundColor: '#fff',
-
   },
   huntCardContainer: {
     flexDirection: 'row',

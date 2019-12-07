@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, ImageBackground, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import InsufficientTokensModal from './subComponents/insufficientTokensModal';
 
-export default function huntDetailsView({ hunt, enterHunt }) {
+export default function huntDetailsView({ hunt, enterHunt, modalVisible, closeModal, navigateToPurchaseTokens }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{hunt.title}</Text>
@@ -44,6 +45,11 @@ export default function huntDetailsView({ hunt, enterHunt }) {
           Enter
         </Text>
       </TouchableOpacity>
+      <InsufficientTokensModal
+        modalVisible={modalVisible}
+        closeModal={closeModal}
+        navigateToPurchaseTokens={navigateToPurchaseTokens}
+      />
     </View>
   );
 }

@@ -26,7 +26,8 @@ import MyHunts from '../containers/myHunts';
 import Account from '../containers/account';
 import CitySearch from '../containers/citySearch';
 import HuntDetails from '../containers/huntDetails';
-
+import PurchaseTokens from '../containers/purchaseTokens';
+import ActiveHunt from '../containers/activeHunt';
 
 
 const mainNav = createBottomTabNavigator({
@@ -132,6 +133,40 @@ const noBottomNav = createBottomTabNavigator({
       )
     }
   },
+  PurchaseTokens: {
+    screen: createStackNavigator({
+      PurchaseTokens: {
+        screen: PurchaseTokens,
+        navigationOptions: {
+          headerRight: <TokenHeader />,
+        },
+      },
+    }),
+    navigationOptions: {
+      title: 'Purchase Tokens',
+      activeTintColor: Colors.main,
+      tabBarIcon: ({ tintColor }) => (
+        <Icon2 name="map-search-outline" size={28} color={tintColor}/>
+      )
+    }
+  },
+  ActiveHunt: {
+    screen: ActiveHunt,
+  },
+  // ActiveHunt: {
+  //   screen: createStackNavigator({
+  //     ActiveHunt: {
+  //       screen: ActiveHunt,
+  //     },
+  //   }),
+  //   navigationOptions: {
+  //     title: 'Active Hunt',
+  //     activeTintColor: Colors.main,
+  //     tabBarIcon: ({ tintColor }) => (
+  //       <Icon2 name="map-search-outline" size={28} color={tintColor}/>
+  //     )
+  //   }
+  // },
 },
 {
   tabBarOptions: {

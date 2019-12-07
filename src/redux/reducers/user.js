@@ -1,7 +1,9 @@
 import { SET_USER_DATA } from '../actions/types';
 
 const INITIAL_STATE = {
-  user: {},
+  user: {
+    tokens: 0,
+  },
 };
 
 export default (state = INITIAL_STATE, { type, payload }) => {

@@ -13,7 +13,7 @@ class TokensHeader extends React.Component {
     return (
       <View style={styles.container}>
         <Text style={styles.tokensText}>
-          Available Tokens: 24
+          Available Tokens: {this.props.state.tokens}
         </Text>
       </View>
     );
@@ -33,4 +33,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null)(withNavigation(TokensHeader));
+function mapStateToProps({ user: { user } }) {
+  return {
+    state: {
+      tokens: user.tokens,
+    }
+  }
+}
+
+export default connect(mapStateToProps)(withNavigation(TokensHeader));
