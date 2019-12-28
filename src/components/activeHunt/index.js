@@ -19,7 +19,7 @@ class ActiveHunt extends React.Component {
         this._animateIndicator();
       }, this.state.animationSpeed),
       interval: setInterval(() => {
-
+        this.huntLogic();
       }, 1000),
     });
     this.backHandler = BackHandler.addEventListener('hardwareBackPress', this.navigateAway);
@@ -41,7 +41,12 @@ class ActiveHunt extends React.Component {
   };
 
   huntLogic = async () => {
-    const distance = await getDistance();
+    const hunt = this.props.state.hunt.huntId;
+    const lat = hunt.location.coordinates[1];
+    const lon = hunt.location.coordinates[0];
+
+    const distance = await getDistance(lat, lon);
+    
     if (distance < .004) {
       clearInterval(this.state.interval);
       clearInterval(this.state.animationSpeed);
