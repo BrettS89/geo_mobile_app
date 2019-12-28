@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import store from './redux';
 import AppNav from './navigation';
 import LoadingModal from './shared/components/loadingModal';
