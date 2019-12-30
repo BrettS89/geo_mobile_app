@@ -1,6 +1,7 @@
 import ActiveHunt from '../components/activeHunt';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import * as huntActions from '../redux/actions/hunt';
 
 function mapStateToProps({ hunt: { currentlyHunting } }) {
   return {
@@ -10,4 +11,14 @@ function mapStateToProps({ hunt: { currentlyHunting } }) {
   };
 }
 
-export default connect(mapStateToProps)(ActiveHunt);
+function mapDispatchToProps(dispatch) {
+  const allActions = {
+    ...huntActions,
+  };
+
+  return {
+    actions: bindActionCreators(allActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ActiveHunt);

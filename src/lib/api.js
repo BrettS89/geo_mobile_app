@@ -82,3 +82,17 @@ export async function apiEnterHunt(body) {
   errorThrower(res, response);
   return response;
 }
+
+export async function youWon(body) {
+  const res = await fetch(`${URI}hunt/won`, {
+    method: 'patch',
+    body: JSON.stringify(body),
+    headers: {
+      'authoriization': await getToken(),
+      'Content-Type': 'application/json',
+    },
+  });
+  const response = await res.json();
+  errorThrower(res, response);
+  return response;
+}

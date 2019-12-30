@@ -1,4 +1,4 @@
-import { OPEN_INSUFFICIENT_TOKENS_MODAL, CLOSE_INSUFFICIENT_TOKENS_MODAL, SET_CURRENTLY_HUNTING, YOU_WON } from '../actions/types';
+import { OPEN_INSUFFICIENT_TOKENS_MODAL, CLOSE_INSUFFICIENT_TOKENS_MODAL, SET_CURRENTLY_HUNTING, SET_WON } from '../actions/types';
 
 const INITIAL_STATE = {
   insufficientTokensModal: false,
@@ -26,7 +26,7 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         currentlyHunting: payload,
       };
 
-    case YOU_WON:
+    case SET_WON:
       return {
         ...state,
         currentlyHunting: {

@@ -46,10 +46,12 @@ class ActiveHunt extends React.Component {
     const lon = hunt.location.coordinates[0];
 
     const distance = await getDistance(lat, lon);
-    
+
     if (distance < .004) {
       clearInterval(this.state.interval);
       clearInterval(this.state.animationSpeed);
+      this.props.actions.youWon();
+      // call you won
       return;
     }
     const speed = getFlashSpeed(distance);

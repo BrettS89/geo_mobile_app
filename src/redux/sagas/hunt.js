@@ -3,7 +3,7 @@ import {
 } from 'redux-saga/effects';
 import * as actions from '../actions/types';
 import * as api from '../../lib/api';
-import { hunt, hunts, myHunts, user } from '../selectors';
+import { hunt, hunts, myHunts, user, activeHuntState } from '../selectors';
 
 export default [
   enterHuntWatcher,
@@ -16,6 +16,10 @@ function * enterHuntWatcher() {
 
 function * startHuntingWatcher() {
   yield takeLatest(actions.START_HUNTING, startHuntingHandler);
+}
+
+function * youWonWatcher() {
+  yield takeLatest(actions.YOU_WON, youWonHandler);
 }
 
 function * enterHuntHandler({ payload: { huntId, navigate } }) {
@@ -52,5 +56,16 @@ function * startHuntingHandler({ payload: { huntId, navigate } }) {
   } catch(e) {
     yield put({ type: actions.APP_NOT_LOADING });
     console.log('startHuntingHandler error: ', e);
+  }
+}
+
+function * youWonHandler() {
+  try {
+    const hunt = yield select(activeHuntState);
+    const body = { hunt: hunt._id };
+    yield call(api.youWon, huntId);
+    yield put({ type: actions.SET_WON });
+  } catch(e) {
+    console.log('youWonHandler error: ', e);
   }
 }
