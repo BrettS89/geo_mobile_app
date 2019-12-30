@@ -63,7 +63,7 @@ function * youWonHandler() {
   try {
     const hunt = yield select(activeHuntState);
     const body = { hunt: hunt._id };
-    yield call(api.youWon, huntId);
+    yield call(api.youWon, body);
     yield put({ type: actions.SET_WON });
   } catch(e) {
     console.log('youWonHandler error: ', e);
