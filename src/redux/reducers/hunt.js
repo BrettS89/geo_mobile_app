@@ -31,7 +31,10 @@ export default (state = INITIAL_STATE, { type, payload }) => {
         ...state,
         currentlyHunting: {
           ...state.currentlyHunting,
-          won: true,
+          huntId: {
+            ...state.currentlyHunting.huntId,
+            won: true,
+          },
         },
       };
 

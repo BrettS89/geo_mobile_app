@@ -13,6 +13,7 @@ class AppContainer extends React.Component {
         <View style={{ flex: 1, backgroundColor: '#fff' }}>
           <AppNav />
           <LoadingModal />
+          
         </View>
       </Provider>
     );

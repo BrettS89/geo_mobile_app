@@ -1,4 +1,4 @@
-import { ENTER_HUNT, CLOSE_INSUFFICIENT_TOKENS_MODAL, START_HUNTING, YOU_WON } from './types';
+import { ENTER_HUNT, CLOSE_INSUFFICIENT_TOKENS_MODAL, START_HUNTING, YOU_WON, CONFIRM_WON } from './types';
 
 export const enterHunt = payload => ({
   type: ENTER_HUNT,
@@ -16,4 +16,9 @@ export const startHunting = payload => ({
 
 export const youWon = () => ({
   type: YOU_WON,
+});
+
+export const confirmWon = payload => ({
+  type: CONFIRM_WON,
+  payload,
 });

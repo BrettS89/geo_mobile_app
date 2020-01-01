@@ -30,3 +30,5 @@ export const SET_CURRENTLY_HUNTING = 'SET_CURRENTLY_HUNTING';
 export const START_HUNTING = 'START_HUNTING';
 export const YOU_WON = 'YOU_WON';
 export const SET_WON = 'SET_WON';
+export const CONFIRM_WON = 'CONFIRM_WON';
+

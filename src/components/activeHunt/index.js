@@ -8,16 +8,14 @@ import colors from '../../shared/styles/colors';
 class ActiveHunt extends React.Component {
   state = {
     color: colors.main,
-    animationSpeed: 1000,
-    animationIterval: null,
+    blinkSpeed: 1000,
     interval: null,
+    distance: 0,
+    won: 'nope',
   };
 
   componentDidMount() {
     this.setState({
-      animationInterval: setInterval(() => {
-        this._animateIndicator();
-      }, this.state.animationSpeed),
       interval: setInterval(() => {
         this.huntLogic();
       }, 1000),
@@ -31,6 +29,7 @@ class ActiveHunt extends React.Component {
 
   navigateAway = () => {
     this.props.navigation.navigate('MyHunts');
+    return true;
   };
 
   _animateIndicator = () => {
@@ -42,20 +41,29 @@ class ActiveHunt extends React.Component {
 
   huntLogic = async () => {
     const hunt = this.props.state.hunt.huntId;
-    const lat = hunt.location.coordinates[1];
-    const lon = hunt.location.coordinates[0];
+    const lat = hunt.location.coordinates[1].$numberDecimal;
+    const lon = hunt.location.coordinates[0].$numberDecimal;
 
     const distance = await getDistance(lat, lon);
 
-    if (distance < .004) {
+    if (distance < .02) {
       clearInterval(this.state.interval);
       clearInterval(this.state.animationSpeed);
+      // you won
       this.props.actions.youWon();
-      // call you won
+      this.setState({ won: 'yup' });
       return;
     }
     const speed = getFlashSpeed(distance);
-    this.setState({ animationSpeed: speed });
+    if (speed !== this.state.blinkSpeed) {
+    
+      this.setState({
+        blinkSpeed: speed,
+        distance,
+      });
+    } else {
+      this.setState({ distance, });
+    }
   };
 
   render() {
@@ -64,6 +72,10 @@ class ActiveHunt extends React.Component {
         hunt={this.props.state.hunt.huntId}
         back={this.navigateAway}
         color={this.state.color}
+        distance={this.state.distance}
+        confirmWon={this.props.actions.confirmWon}
+        blinkSpeed={this.state.blinkSpeed}
+        won={this.state.won}
       />
     );
   }

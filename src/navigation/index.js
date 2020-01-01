@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import {
   createSwitchNavigator,
   createAppContainer,
@@ -28,14 +27,13 @@ import CitySearch from '../containers/citySearch';
 import HuntDetails from '../containers/huntDetails';
 import PurchaseTokens from '../containers/purchaseTokens';
 import ActiveHunt from '../containers/activeHunt';
-
+import AddPaymentMethod from '../components/addPaymentMethod';
 
 const mainNav = createBottomTabNavigator({
   FindHunt: {
     screen: createStackNavigator({
       FindHunt: {
         screen: FindHunt,
-        // title: 'My Hunts',
         navigationOptions: {
           headerLeft: <Logo />,
           headerRight: <CitySearchIcon />,
@@ -127,6 +125,23 @@ const noBottomNav = createBottomTabNavigator({
     }),
     navigationOptions: {
       title: 'Hunt Details',
+      activeTintColor: Colors.main,
+      tabBarIcon: ({ tintColor }) => (
+        <Icon2 name="map-search-outline" size={28} color={tintColor}/>
+      )
+    }
+  },
+  AddPaymentMethod: {
+    screen: createStackNavigator({
+      AddPaymentMethod: {
+        screen: AddPaymentMethod,
+        navigationOptions: {
+          headerLeft: <Logo />,
+        },
+      },
+    }),
+    navigationOptions: {
+      title: 'Add Payment Method',
       activeTintColor: Colors.main,
       tabBarIcon: ({ tintColor }) => (
         <Icon2 name="map-search-outline" size={28} color={tintColor}/>

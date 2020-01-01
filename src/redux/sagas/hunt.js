@@ -8,6 +8,8 @@ import { hunt, hunts, myHunts, user, activeHuntState } from '../selectors';
 export default [
   enterHuntWatcher,
   startHuntingWatcher,
+  youWonWatcher,
+  confirmWonWatcher,
 ];
 
 function * enterHuntWatcher() {
@@ -20,6 +22,10 @@ function * startHuntingWatcher() {
 
 function * youWonWatcher() {
   yield takeLatest(actions.YOU_WON, youWonHandler);
+}
+
+function * confirmWonWatcher() {
+  yield takeLatest(actions.CONFIRM_WON, confirmWonHandler);
 }
 
 function * enterHuntHandler({ payload: { huntId, navigate } }) {
@@ -62,10 +68,26 @@ function * startHuntingHandler({ payload: { huntId, navigate } }) {
 function * youWonHandler() {
   try {
     const hunt = yield select(activeHuntState);
-    const body = { hunt: hunt._id };
+    const body = { hunt: hunt.huntId._id };
     yield call(api.youWon, body);
     yield put({ type: actions.SET_WON });
+    // get my hunts again
+    const { data } = yield call(api.myHunts, 0);
+    // set my hunts
+    yield put({ type: actions.SET_MY_HUNTS, payload: data });
   } catch(e) {
     console.log('youWonHandler error: ', e);
+  }
+}
+
+function * confirmWonHandler({ payload }) {
+  try {
+    payload();
+    yield put({ type: actions.APP_LOADING });
+    yield put({ type: actions.SET_CURRENTLY_HUNTING, payload: {} });
+    yield put({ type: actions.APP_NOT_LOADING });
+  } catch(e) {
+    yield put({ type: actions.APP_NOT_LOADING });
+    console.log('confirmWonHandler error: ', e);
   }
 }
