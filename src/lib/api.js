@@ -108,3 +108,31 @@ export async function myHunts(offset) {
   errorThrower(res, response);
   return response;
 }
+
+export async function purchaseTokens(body) {
+  const res = await fetch(`${URI}/tokens/purchase`, {
+    method: 'patch',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': await getToken(),
+    },
+    body: JSON.stringify(body),
+  });
+  const response = await res.json();
+  errorThrower(res, response);
+  return response;
+}
+
+export async function addCreditCard(body) {
+  const res = await fetch(`${URI}/tokens/addcard`, {
+    method: 'patch',
+    headers: {
+      'Content-Type': 'application/json',
+      'authorization': await getToken(),
+    },
+    body: JSON.stringify(body),
+  });
+  const response = await res.json();
+  errorThrower(res, response);
+  return response;
+}

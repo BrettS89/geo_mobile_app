@@ -7,15 +7,10 @@ import Add from 'react-native-vector-icons/FontAwesome5';
 import Right from 'react-native-vector-icons/FontAwesome5';
 import colors from '../../shared/styles/colors';
 
-export default function accountView({ navigate }) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        My Account
-      </Text>
-
-
-      <View style={[styles.sectionRow, { borderTopWidth: 1, borderTopColor: colors.midGrey2 }]}>
+export default function accountView({ navigate, user }) {
+  const renderPaymentMethod = () => {
+    if (!user.stripeId) {
+      return (
         <View style={styles.flexRow}>
           <Card 
             name="credit-card"
@@ -27,8 +22,32 @@ export default function accountView({ navigate }) {
             No payment method added
           </Text>
         </View>
+      );
+    }
+    return (
+      <View style={styles.flexRow}>
+        <Card
+          name="credit-card"
+          size={30}
+          color={colors.main}
+          style={styles.icon}
+        />
+        <Text style={styles.text}>
+          Payment method: {user.cardType} {user.cardLast4}
+        </Text>
       </View>
+    );
+  };
 
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>
+        My Account
+      </Text>
+
+      <View style={[styles.sectionRow, { borderTopWidth: 1, borderTopColor: colors.midGrey2 }]}>
+        {renderPaymentMethod()}
+      </View>
 
       <View style={styles.sectionRow}>
         <TouchableOpacity onPress={() => navigate('AddPaymentMethod')} style={styles.btn}>
@@ -49,18 +68,20 @@ export default function accountView({ navigate }) {
 
 
       <View style={styles.sectionRow}>
-        <View style={styles.flexRow}>
-          <Tokens 
-                name="coins"
-                color="#ffdf00"
-                size={34} 
-                style={styles.icon}
-              />
-          <Text style={styles.text}>
-            Purchase tokens
-          </Text>
-        </View>
-        <Right name="chevron-right" size={20} />
+        <TouchableOpacity onPress={() => navigate('PurchaseTokens')} style={styles.btn}>
+          <View style={styles.flexRow}>
+            <Tokens 
+                  name="coins"
+                  color="#ffdf00"
+                  size={34} 
+                  style={styles.icon}
+                />
+            <Text style={styles.text}>
+              Purchase tokens
+            </Text>
+          </View>
+          <Right name="chevron-right" size={20} />
+        </TouchableOpacity>
       </View>
 
 

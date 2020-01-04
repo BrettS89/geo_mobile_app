@@ -12,7 +12,7 @@ export default function logo(props) {
 
 const styles = StyleSheet.create({
   logo: {
-    width: 130,
+    width: 126,
     marginLeft: 14,
   }
 });

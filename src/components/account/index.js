@@ -10,6 +10,7 @@ class Account extends React.Component {
     return (
       <View
         navigate={this.navigate}
+        user={this.props.state.user}
       />
     );
   }

@@ -53,5 +53,10 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: colors.main,
     fontWeight: '600',
+  },
+  description2: {
+    flexWrap: 'wrap',
+    color: colors.main,
+    fontWeight: '600',
   }
 });

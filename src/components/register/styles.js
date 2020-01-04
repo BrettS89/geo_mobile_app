@@ -28,14 +28,12 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center', 
     alignItems: 'center',
-    // backgroundColor: Colors.secondary,
-    borderWidth: 3,
-    borderColor: Colors.main,
+    backgroundColor: Colors.main,
     borderRadius: 50,
     height: 45
   },
   buttonText: {
-    color: Colors.main,
+    color: '#fff',
     fontWeight: '600',
     fontSize: 15,
   },

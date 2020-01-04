@@ -1,22 +1,35 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/FontAwesome5';
 
-const Input = ({ labelText, value, onChangeText, placeholder, secureTextEntry, onSubmitHandler, email, clear }) => {
+const Input = ({ labelText, value, onChangeText, placeholder, secureTextEntry, onSubmitHandler, email, clear, type }) => {
 
   const displayIcon = () => {
     if(labelText === 'email') {
       return <Icon name="user-circle" size={26} color="lightgray" />;
     }
     if(labelText === 'password') {
-      return <View style={{ marginLeft: 2 }}><Icon name="unlock-alt" size={28} color="lightgray" /></View>;
+      return <Icon name="unlock-alt" size={28} color="lightgray" style={{ marginLeft: 2 }} />;
     }
     if(labelText === 'firstname') {
-      return <Icon name="vcard-o" size={24} color="lightgray" />
+      return <Icon name="vcard-o" size={24} color="lightgray" />;
     }
     if(labelText === 'lastname') {
-      return <Icon name="vcard-o" size={24} color="lightgray" />
+      return <Icon name="vcard-o" size={24} color="lightgray" />;
     }
+    if (labelText === 'card') {
+      return <Icon2 name="credit-card" size={24} color="lightgray" />;
+    }
+    if (labelText === 'date') {
+      return <Icon2 name="calendar-alt" size={24} color="lightgray" style={{ marginLeft: 2 }} />;
+    }
+  };
+
+  const renderKeyboardType = () => {
+    if (type === 'email' || email) return 'email-address';
+    if (type === 'number') return 'number-pad';
+    return 'default';
   };
 
   const { label, textInput, container } = styles;
@@ -29,7 +42,7 @@ const Input = ({ labelText, value, onChangeText, placeholder, secureTextEntry, o
         secureTextEntry={secureTextEntry}
         style={textInput}
         value={clear ? '' : value}
-        keyboardType={email ? 'email-address' : 'default'}
+        keyboardType={renderKeyboardType()}
         onChangeText={onChangeText}
         autoCorrect={false}
         placeholder={placeholder}
@@ -43,8 +56,6 @@ const Input = ({ labelText, value, onChangeText, placeholder, secureTextEntry, o
 
 const styles = StyleSheet.create({
   label: {
-    // fontSize: 15,
-    // fontWeight: '500',
     flex: 1
   },
   textInput: {

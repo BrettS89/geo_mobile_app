@@ -1,33 +1,23 @@
 import React from 'react';
-import { View, TouchableOpacity, Text, ImageBackground } from 'react-native';
-import styles from '../styles';
+import { useSelector } from 'react-redux';
+import DefaultHuntCard from './defaultHuntCard';
+import FinishedHuntCard from './finishedHunt';
+import YouWonHuntCard from './youWonHunt';
 
 export default function huntCard({ hunt, hunt: { huntId }, startHunting }) {
-  const h = huntId;
+  let Card = DefaultHuntCard;
+  const userId = useSelector(state => state.user.user._id);
+
+  if (huntId.finished && huntId.winner !== userId) {
+    Card = FinishedHuntCard;
+  } else if (huntId.finished && huntId.winner === userId) {
+    Card = YouWonHuntCard;
+  }
+
   return (
-    <View 
-      style={styles.huntCardContainer}
-    >
-      <ImageBackground 
-        style={styles.imageView}
-        imageStyle={{ borderRadius: 2 }}
-        resizeMode="cover"
-        source={{ uri: h.prizePic }}
-      />
-
-      <View style={styles.contentContainer}>
-        <View>
-          <Text style={styles.title}>
-            {h.title}
-          </Text>
-          <TouchableOpacity onPress={() => startHunting(hunt._id)} style={styles.button}>
-            <Text style={styles.description}>
-              Start hunting
-            </Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-
-    </View>
+    <Card
+      hunt={hunt}
+      startHunting={startHunting}
+    />
   );
 }

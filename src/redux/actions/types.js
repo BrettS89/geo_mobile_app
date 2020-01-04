@@ -12,6 +12,8 @@ export const CLEAR_AUTH_ERRORS = 'CLEAR_AUTH_ERRORS';
 
 // User
 export const SET_USER_DATA = 'SET_USER_DATA';
+export const PURCHASE_TOKENS = 'PURCHASE_TOKENS';
+export const ADD_CREDIT_CARD = 'ADD_CREDIT_CARD';
 
 // Hunts
 export const GET_CITIES = 'GET_CITIES';
@@ -31,4 +33,3 @@ export const START_HUNTING = 'START_HUNTING';
 export const YOU_WON = 'YOU_WON';
 export const SET_WON = 'SET_WON';
 export const CONFIRM_WON = 'CONFIRM_WON';
-

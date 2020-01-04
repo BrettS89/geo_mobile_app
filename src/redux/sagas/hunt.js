@@ -34,6 +34,7 @@ function * enterHuntHandler({ payload: { huntId, navigate } }) {
     const selectedHunt = yield select(hunt);
     const searchedHunts = yield select(hunts);
     if (userData.tokens < selectedHunt.tokens) {
+      yield put({ type: actions.APP_NOT_LOADING });
       return yield put({ type: actions.OPEN_INSUFFICIENT_TOKENS_MODAL });
     }
     yield put({ type: actions.APP_LOADING });

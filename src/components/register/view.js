@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import Input from '../../shared/components/Input';
-import { LOGO5 } from '../../../assets/images';
+import { NEW_LOGO } from '../../../assets/images';
 
 export default function registerView(props) {
   function showError() {
@@ -16,7 +16,7 @@ export default function registerView(props) {
       <View style={styles.signupFormContainer}>
 
         <View style={styles.logoContainer}>
-          <Image source={LOGO5} resizeMode="contain" style={{ width: 160, height: 50 }} />
+          <Image source={NEW_LOGO} resizeMode="contain" style={{ width: 160, height: 50 }} />
         </View>
 
         <View style={{ marginTop: 40 }}>

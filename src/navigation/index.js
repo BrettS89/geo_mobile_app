@@ -14,6 +14,7 @@ import CitySearchIcon from '../components/_misc/citySearchIcon';
 import CitySearchBar from '../components/_misc/citySearchBar';
 import HuntDetailHeader from '../components/_misc/huntDetailHeader';
 import TokenHeader from '../components/_misc/tokensHeader';
+import BackToAccount from '../shared/components/backToAccount';
 
 // Auth
 import Auth from '../containers/auth';
@@ -27,7 +28,7 @@ import CitySearch from '../containers/citySearch';
 import HuntDetails from '../containers/huntDetails';
 import PurchaseTokens from '../containers/purchaseTokens';
 import ActiveHunt from '../containers/activeHunt';
-import AddPaymentMethod from '../components/addPaymentMethod';
+import AddPaymentMethod from '../containers/addCreditCard';
 
 const mainNav = createBottomTabNavigator({
   FindHunt: {
@@ -136,7 +137,7 @@ const noBottomNav = createBottomTabNavigator({
       AddPaymentMethod: {
         screen: AddPaymentMethod,
         navigationOptions: {
-          headerLeft: <Logo />,
+          headerLeft: <BackToAccount />
         },
       },
     }),
@@ -153,6 +154,7 @@ const noBottomNav = createBottomTabNavigator({
       PurchaseTokens: {
         screen: PurchaseTokens,
         navigationOptions: {
+          headerLeft: <BackToAccount />,
           headerRight: <TokenHeader />,
         },
       },

@@ -1,3 +1,12 @@
-import account from '../components/account';
+import Account from '../components/account';
+import { connect } from 'react-redux';
 
-export default account;
+function mapStateToProps({ user: { user } }) {
+  return {
+    state: {
+      user,
+    },
+  };
+}
+
+export default connect(mapStateToProps)(Account);

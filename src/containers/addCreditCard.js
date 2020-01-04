@@ -1,11 +1,11 @@
-import PurchaseTokens from '../components/purchaseTokens';
+import AddCreditCard from '../components/addPaymentMethod';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as tokensActions from '../redux/actions/user';
+import * as userActions from '../redux/actions/user';
 
 function mapDispatchToProps(dispatch) {
   const allActions = {
-    ...tokensActions,
+    ...userActions,
   };
 
   return {
@@ -13,4 +13,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(null, mapDispatchToProps)(PurchaseTokens);
+export default connect(null, mapDispatchToProps)(AddCreditCard);
